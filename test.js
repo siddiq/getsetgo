@@ -10,7 +10,7 @@
 
 var db = require('./couch-getsetgo.js');
 
-var dburl = 'http://getsetgo-test.iriscouch.com/test';
+var dburl = 'http://getsetgo.iriscouch.com/test';
 
 var sessionId = Math.round(Math.random() * 1000000).toString(16);
 
