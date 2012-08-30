@@ -51,7 +51,7 @@ doc1 = {_id: '12345', x: 1, y: 2};
 
 db.set(doc1, function (err) {
   if (!err) {
-     //Successfully saved
+    // Successfully saved
     db.get('12345', function (err, doc2) {
       if (doc2) {
         // Success
