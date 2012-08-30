@@ -10,7 +10,7 @@ Install:
 npm install couch-getsetgo
 ```
 
-Verify:
+Test:
 ======
 ```
 cd node_modules/couch-getsetgo/
@@ -20,6 +20,7 @@ node test.js
 Examples:
 =========
 ```
+db = require('couch-getsetgo');
 db.connect({url: 'http://getsetgo-test.iriscouch.com/test'});
 ```
 
