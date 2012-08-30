@@ -1,0 +1,21 @@
+{
+    "name": "couch-getsetgo",
+    "description": "Easy API for couchdb.",
+    "tags": ["couchdb", "couch", "driver"],
+    "version": "1.0.0",
+    "author": {
+        "name": "Siddiq",
+        "email": "siddiq@mail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/siddiq/couch-getsetgo.git"
+    },
+    "bugs": {
+        "url": "https://github.com/siddiq/couch-getsetgo/issues"
+    },
+    "main": "./main",
+    "dependencies": {
+        "request": ">=2.11.0"
+    }
+}
