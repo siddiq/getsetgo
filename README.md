@@ -4,6 +4,13 @@ couch-getsetgo
 Easy to use couchdb driver.
 Couchdb becomes a simple keystore.
 
+Install:
+=======
+```
+npm install couch-getsetgo
+```
+
+
 Connecting:
 =========
 ```
