@@ -45,5 +45,5 @@ db.set({_id: '12345', name: 'Siddiq', score: 2000}, function (err) {
 });
 ```
 
-Relax:
+Relax !
 =====
