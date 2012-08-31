@@ -53,13 +53,17 @@ exports.connect = function (cfg) {
  * @param {Object} scope
  */
 exports.get = function (cfg, callback, scope) {
+    var url;
+    
     scope = scope || this;
     callback = callback || function () {};
     if (typeof (cfg) === 'string') {
         cfg = {_id: cfg};
     }
+    
+    url = db.url + cfg._id;
 
-    request(db.url + cfg._id, function (error, response, body) {
+    request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             body = JSON.parse(body);
             callback.call(scope, null, body);
