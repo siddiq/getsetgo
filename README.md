@@ -1,8 +1,8 @@
-couch-getsetgo
-==============
+getsetgo
+========
 
-Easy to use couchdb driver.
-Couchdb becomes a simple keystore.
+Easy to use nodejs couchdb driver.
+Couchdb becomes a simple keystore with a get() and set() functions.
 
 Install:
 =======
