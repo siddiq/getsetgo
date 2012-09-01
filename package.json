@@ -14,7 +14,7 @@
     "bugs": {
         "url": "https://github.com/siddiq/couch-getsetgo/issues"
     },
-    "main": "./main",
+    "main": "./couch-getsetgo.js",
     "dependencies": {
         "request": ">=2.11.0"
     }
