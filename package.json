@@ -9,10 +9,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/siddiq/couch-getsetgo.git"
+        "url": "https://github.com/siddiq/getsetgo.git"
     },
     "bugs": {
-        "url": "https://github.com/siddiq/couch-getsetgo/issues"
+        "url": "https://github.com/siddiq/getsetgo/issues"
     },
     "main": "./couch-getsetgo.js",
     "dependencies": {
