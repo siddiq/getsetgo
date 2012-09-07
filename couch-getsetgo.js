@@ -21,12 +21,16 @@ var db = {};
  * If set to "update", the driver is optimised for fast updates (default is "update")
  */
 exports.connect = function (cfg) {
-    if (cfg.mode === 'insert') {
-        db.mode = 'fast-insert-mode';
-    } else if (cfg.mode === 'update') {
+    if (cfg.debug) {
+        db.debug = cfg.debug;
+    }
+
+    if (cfg.mode === 'update') {
         db.mode = 'fast-update-mode';
+    } else if (cfg.mode === 'insert' || cfg.mode === '') {
+        db.mode = 'fast-insert-mode';
     } else {
-        console.log('WARNING: Invalid db mode specified');
+        console.log('WARNING: Invalid db mode specified ' + cfg.mode + '. Using insert mode.');
         db.mode = 'fast-update-mode';
     }
 
@@ -34,6 +38,10 @@ exports.connect = function (cfg) {
         db.url = cfg.url;
         // Add a trailing slash
         db.url = db.url + (/\/$/.test(db.url) ? '' : '/');
+        if (db.debug) {
+            var url = db.url.substr(db.url.indexOf('@') + 1);
+            console.log('Database url: ' + url);
+        }
     } else {
         console.log('ERROR: db url must be specified');
     }
@@ -54,16 +62,23 @@ exports.connect = function (cfg) {
  */
 exports.get = function (cfg, callback, scope) {
     var url;
-    
+
     scope = scope || this;
     callback = callback || function () {};
     if (typeof (cfg) === 'string') {
         cfg = {_id: cfg};
     }
-    
+
     url = db.url + cfg._id;
 
+    if (db.debug) {
+        console.log('db.get() ' + url);
+    }
     request(url, function (error, response, body) {
+        if (db.debug >= 2) {
+            console.log('error', error);
+            console.log('body', body);
+        }
         if (!error && response.statusCode == 200) {
             body = JSON.parse(body);
             callback.call(scope, null, body);
