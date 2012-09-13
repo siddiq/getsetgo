@@ -80,8 +80,17 @@ exports.get = function (cfg, callback, scope) {
             console.log('body', body);
         }
         if (!error && response.statusCode == 200) {
-            body = JSON.parse(body);
-            callback.call(scope, null, body);
+            try {
+                error = null;
+                body = JSON.parse(body);
+            } catch (e) {
+                error = {
+                    error: 'Broken response',
+                    response: body
+                };
+                body = null;
+            }
+            callback.call(scope, error, body);
         } else {
             callback.call(scope, error, null);
         }
@@ -164,7 +173,14 @@ exports.set = function (obj, callback, scope) {
             }]
         }, function (error, response, body) {
             if (response && (response.statusCode == 200 || response.statusCode == 201)) {
-                body = JSON.parse(body);
+                try {
+                    body = JSON.parse(body);
+                } catch (e) {
+                    body = {
+                        error: 'Broken response'
+                    };
+                    console.log('Broken response', body);
+                }
                 if (body.ok && obj2._id === body.id) {
                     // Success
                     obj2._rev = body.rev;
@@ -178,7 +194,13 @@ exports.set = function (obj, callback, scope) {
                 callback.call(scope, error);
             } else {
                 // Error
-                body = JSON.parse(body);
+                try {
+                    body = JSON.parse(body);
+                } catch (e) {
+                    body = {
+                        error: response.statusCode
+                    };
+                }
                 callback.call(scope, body);
             }
         });

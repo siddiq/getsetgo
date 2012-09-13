@@ -2,7 +2,7 @@
     "name": "couch-getsetgo",
     "description": "Easy API for couchdb.",
     "tags": ["couchdb", "couch", "driver"],
-    "version": "1.0.5",
+    "version": "1.0.6",
     "author": {
         "name": "Siddiq",
         "email": "siddiq@mail.com"
